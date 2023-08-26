@@ -34,12 +34,11 @@ int main()
             }
         }
         cout<<endl;
-                    if(i%2!=0)
+            if(i%2!=0)
             {
             logic1=!logic1;
             logic2=!logic2;                
             count++;
-            //cout<<count;
             }
     }
 }
