@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include  <bits/stdc++.h>
 using namespace std;
 
 int main()
@@ -25,40 +25,45 @@ int main()
         {
           int count=it.second[1];
           int countPlus=0;
-          int countMinus=0;
-          bool logic=false;
-          for(int i=0;i<it.second[2];i++)
-          {
-            if(count==it.second[0])
-            {
-                logic=true;
-                break;
-            }
-            if(it.first[i]=='+')
-            {
-                countPlus++;
-                count++;
-            }
-            else if(it.first[i]=='-'){
-                countMinus++;
-                count--;
-            }
-            if(count==it.second[0])
-            {
-                logic=true;
-                break;
-            }
-          }
-          if(logic)
+          int flag=-1;
+          if(it.second[1]==it.second[0])
           {
             cout<<"YES"<<endl;
           }
-          else if( (countPlus+it.second[1]==it.second[0]) && logic==false)
+          else
           {
+            for(int i=0;i<it.second[2];i++)
+            {
+              if(it.first[i]=='+')
+                {
+                    countPlus++;
+                    count++;
+                }
+              else
+                {
+                    count--;
+                }
+              if (count == it.second[0]) 
+              {
+                    flag = 1;
+                    break;
+              }
+              if (it.second[1] + countPlus >= it.second[0]) 
+              {
+                    flag = 2;
+              } 
+            }
+          if(flag==1)
+          {
+            cout<<"YES"<<endl;
+          }
+          else if(flag==-1)
+          {
+            cout<<"NO"<<endl;
+          }
+          else {
             cout<<"MAYBE"<<endl;
           }
-          else if((logic==false) && (countPlus+it.second[1]!=it.second[0])){
-            cout<<"NO"<<endl;
           }
         }
 }
