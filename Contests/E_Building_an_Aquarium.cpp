@@ -1,42 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(vector<int>& vec, int x) {
-    int mx = *max_element(vec.begin(), vec.end());
-    int ht = 1;
-    vector<int> m(mx + 2, 0);
 
-    for (auto it : vec) {
+void solve(vector<int> vec, int x)
+{
+    int mn=*min_element(vec.begin(),vec.end());
+    int ht = mn;
+    unordered_map<int, int> m;
+    for (auto it : vec)
+    {
         m[it]++;
     }
-
-    int i = 1;
-    int n = vec.size(); 
-
-    while (x > 0 && i < mx) { 
-        if (m[i] <= x) {
+    int i=mn;
+    int mx=*max_element(vec.begin(),vec.end());
+    while (x > 0)
+    {
+        if (m[i] <= x)
+        {
             ht++;
-            m[i + 1] += m[i];
-            x -= m[i];
+            m[i+1] += m[i];
+            x-=m[i];
             i++;
         }
-        else {
+        else{
+            break;
+        }
+        if(i>mx)
+        {
             break;
         }
     }
-
-    if (x != 0) {
-        if (x % n == 0) { 
-            ht += x / n;
+    if(x!=0)
+    {
+        if(x%vec.size()==0)
+        {
+            ht+=x/vec.size();
         }
-        else {
-            int dump = x % n;
-            x -= dump;
-            ht += x / n;
+        else{
+            int dump=x%vec.size();
+            x-=dump;
+            ht+=x/vec.size();
         }
     }
-
-    cout << ht << endl;
+    cout<<ht<<endl;
 }
 
 int main() {
