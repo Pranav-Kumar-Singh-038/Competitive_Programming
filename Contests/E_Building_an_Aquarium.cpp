@@ -21,13 +21,13 @@ void solve(long long x, const vector<int> &a)
     int high = low + x;
     if (a.size() == 1)
     {
-        cout << low + x<<endl;
+        cout << low+x<<endl;
     }
     else
     {
         while (low <= high)
         {
-            int mid = (low + high) / 2;
+            int mid = low + (high- low) / 2;// This is faster as compared to mid = (low + high)/2, also this will not have integer overflow
 
             if (can_fill_tank(a, mid, x))
             {
