@@ -3,13 +3,13 @@ using namespace std;
 
 void solve(int k, vector<int> jelly, vector<int> gelly)
 {
-    int maxj = *max_element(jelly.begin(), jelly.end());
-    int maxg = *max_element(gelly.begin(), gelly.end());
-    int minj = *min_element(jelly.begin(), jelly.end());
-    int ming = *min_element(gelly.begin(), gelly.end());
+      int maxj = *max_element(jelly.begin(), jelly.end());
+      int maxg = *max_element(gelly.begin(), gelly.end());
+      int minj = *min_element(jelly.begin(), jelly.end());
+      int ming = *min_element(gelly.begin(), gelly.end());
     if (k % 2 == 0)
     {
-        int sum = accumulate(jelly.begin(), jelly.end(), 0ll);
+        long long int sum = accumulate(jelly.begin(), jelly.end(), 0ll);
         if (minj > maxg)
         {
             cout<<sum-maxj+ming<<endl;
@@ -32,7 +32,7 @@ void solve(int k, vector<int> jelly, vector<int> gelly)
     }
     else
     {
-        int sum = accumulate(jelly.begin(), jelly.end(), 0);
+        long long int sum = accumulate(jelly.begin(), jelly.end(), 0ll);
         if (minj > maxg)
         {
             cout << sum << endl;
