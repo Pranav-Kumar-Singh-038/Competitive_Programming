@@ -43,7 +43,7 @@ void solve(int k, vector<int> jelly, vector<int> gelly)
         }     
     }
 }
-
+/////
 int main()
 {
     int t;
