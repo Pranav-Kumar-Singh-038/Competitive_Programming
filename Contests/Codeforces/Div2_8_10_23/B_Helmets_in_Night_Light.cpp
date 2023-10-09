@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(vector<int> people, vector<int> cost, int p)
+void solve(vector<long long int> people, vector<long long int> cost, long long int p)
 {
-    int n = cost.size();
-    multimap<int, int> m;
-    int total = 0;
-    int term = 0;
+    long long int n = cost.size();
+    multimap<long long int, long long int> m;
+    unsigned long long int total = 0;
+    long long int term = 0;
     bool pos = false;
 
-    for (int i = 0; i < n; i++)
+    for (long long int i = 0; i < n; i++)
     {
         if (cost[i] < p)
         {
@@ -20,13 +20,12 @@ void solve(vector<int> people, vector<int> cost, int p)
         }
     }
 
-//used multimap this time
-// introduced temp variable
+
     if (pos && term != n)
     {
         for (const auto &it : m)
         {
-            int temp=term;
+            long long int temp=term;
             temp += it.second;
             if (temp == n)
             {
@@ -68,24 +67,24 @@ void solve(vector<int> people, vector<int> cost, int p)
 
 int main()
 {
-    int t;
+    long long int t;
     cin >> t;
     while (t--)
     {
-        int n, p;
+        long long int n, p;
         cin >> n >> p;
-        int temp = n;
-        vector<int> people;
+        long long int temp = n;
+        vector<long long int> people;
         while (n--)
         {
-            int x;
+            long long int x;
             cin >> x;
             people.push_back(x);
         }
-        vector<int> cost;
+        vector<long long int> cost;
         while (temp--)
         {
-            int x;
+            long long int x;
             cin >> x;
             cost.push_back(x);
         }
