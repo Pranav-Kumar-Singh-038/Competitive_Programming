@@ -4,57 +4,52 @@ using namespace std;
 void solve(int a, int b, vector<int> vec)
 {
     sort(vec.begin(), vec.end());
-    int totime = b;
-    int sum = totime - 1;
-    int i = 0;
-    while (i < vec.size())
+    int timer = b;
+    long long int total = timer - 1;
+    timer = 1;
+    // cout<<total<<endl;
+    int i=0;
+    while(i<vec.size())
     {
-        if (totime < a)
+        // cout<<i<<endl;
+        if (vec[i] < a)
         {
-            while (totime < a && i < vec.size())
+            int temp=timer;
+            while (temp <= a && i < vec.size())
             {
-                int fin = totime + vec[i];
-                if (fin > a || i == vec.size())
+                int temp=timer+vec[i];
+                if(temp>a || i==vec.size())
                 {
                     break;
                 }
-                else
-                {
-                    totime += vec[i];
+                else{
+                    timer+=vec[i];
                     i++;
                 }
             }
-            sum += totime - 1;
-            totime=1;
-        }
-        if (totime == 1)
-        {
-            while (totime < a && i < vec.size())
+            if(temp>a)
             {
-                int fin = totime + vec[i];
-                if (fin > a || i == vec.size())
-                {
-                    break;
-                }
-                else
-                {
-                    totime += vec[i];
-                    i++;
-                }
+                i--;
+                temp-=vec[i];
             }
-            if (totime == 1 && i != vec.size())
-            {
-                totime = a;
-                i++;
-            }
-            sum += totime - 1;
+            timer=temp;
+            cout<<timer<<endl;
+            total += timer - 1;
+            timer = 1;
+            // cout<<vec[i]<<endl;
         }
-        else
+        if(vec[i]>=a)
         {
-            totime = 1;
+            timer = a;
+            total += timer - 1;
+            timer = 1;
+            i++;
+            // cout<<"yes";
         }
+        // cout<<vec[i]<<endl;
+        // cout<<total<<endl;
     }
-    cout << sum+1 << endl;
+    // cout << total + 1 << endl;
 }
 
 int main()
