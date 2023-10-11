@@ -1,69 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-void solve(int a, int b, vector<int> vec)
+ 
+void solve(long long int a, long long int b, vector<long long int> vec)
 {
     sort(vec.begin(), vec.end());
-    int timer = b;
-    long long int total = timer - 1;
-    timer = 1;
-    // cout<<total<<endl;
-    int i=0;
-    while(i<vec.size())
+    long long int totime = b;
+    long long int sum = totime - 1;
+    long long int i = 0;
+    while (i < vec.size())
     {
-        // cout<<i<<endl;
-        if (vec[i] < a)
+        if (totime == 1)
         {
-            int temp=timer;
-            while (temp <= a && i < vec.size())
+            while(totime<a && i<vec.size())
             {
-                int temp=timer+vec[i];
-                if(temp>a || i==vec.size())
+                int fin=totime+vec[i];
+                if(fin>a || i==vec.size())
                 {
                     break;
                 }
                 else{
-                    timer+=vec[i];
+                    totime+=vec[i];
                     i++;
                 }
             }
-            if(temp>a)
+            if(totime==1 && i!=vec.size())
             {
-                i--;
-                temp-=vec[i];
+                totime=a;
+                i++;
             }
-            timer=temp;
-            cout<<timer<<endl;
-            total += timer - 1;
-            timer = 1;
-            // cout<<vec[i]<<endl;
+            sum += totime - 1;
         }
-        if(vec[i]>=a)
+        else
         {
-            timer = a;
-            total += timer - 1;
-            timer = 1;
-            i++;
-            // cout<<"yes";
+            totime=1;
         }
-        // cout<<vec[i]<<endl;
-        // cout<<total<<endl;
     }
-    // cout << total + 1 << endl;
+    cout << sum+1 << endl;
 }
-
+ 
 int main()
 {
-    int t;
+    long long int t;
     cin >> t;
     while (t--)
     {
-        int a, b, n;
+        long long int a, b, n;
         cin >> a >> b >> n;
-        vector<int> vec;
+        vector<long long int> vec;
         while (n--)
         {
-            int x;
+            long long int x;
             cin >> x;
             vec.push_back(x);
         }
