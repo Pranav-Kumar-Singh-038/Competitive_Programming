@@ -1,18 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// void solve()
-// {
-
-// }
-
-//Firt Approach: Brute Force
+// Firt Approach: Brute Force
 // TC: O(n*m)
 // SC: O(n*m*x)
 // memory limit exceeded
 string concat(string x)
 {
-    x = x + x;
+    x += x;
     return x;
 }
 
