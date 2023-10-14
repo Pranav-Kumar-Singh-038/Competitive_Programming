@@ -33,7 +33,7 @@ void solve(int n, int m, string x, string s)
     while (true)
     {
         chk = check(x, s);
-        if (chk == string::npos && count<(n*m))
+        if (chk == string::npos && count<(5))
         {
             x=concat(x);
             count++;
