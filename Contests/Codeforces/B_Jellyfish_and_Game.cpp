@@ -3,47 +3,40 @@ using namespace std;
 
 void solve(int k, vector<int> jelly, vector<int> gelly)
 {
-      int maxj = *max_element(jelly.begin(), jelly.end());
-      int maxg = *max_element(gelly.begin(), gelly.end());
-      int minj = *min_element(jelly.begin(), jelly.end());
-      int ming = *min_element(gelly.begin(), gelly.end());
-    if (k % 2 == 0)
+    int maxj = *max_element(jelly.begin(), jelly.end());
+    int maxg = *max_element(gelly.begin(), gelly.end());
+    int minj = *min_element(jelly.begin(), jelly.end());
+    int ming = *min_element(gelly.begin(), gelly.end());
+    int Min = min(ming, minj);
+    int Max = max(maxg, maxj);
+    sort(jelly.begin(), jelly.end());
+    sort(gelly.begin(), gelly.end());
+
+    if (k >= 1)
     {
-        long long int sum = accumulate(jelly.begin(), jelly.end(), 0ll);
-        if (minj > maxg)
+        if (jelly[0] < gelly[gelly.size() - 1])
         {
-            cout<<sum-maxj+ming<<endl;
+            int temp = jelly[0];
+            jelly[0] = gelly[gelly.size() - 1];
+            gelly[gelly.size() - 1] = temp;
         }
-        else if((ming>maxj) || ( maxj==maxg && minj==ming)||(maxj<maxg && minj<ming) || (minj==ming && maxj<maxg) || (maxj==maxg && minj<ming) || (maxj==maxg && minj>ming)){
-            cout<<sum<<endl;
-        }
-        else if((minj<ming && maxj>maxg) || (minj==ming && maxj>maxg))
-        {
-            cout<<sum-maxj+maxg<<endl;
-        }
-        else if(minj>ming && maxj<maxg)
-        {
-            cout<<sum-minj+ming<<endl;
-        }
-        else if(maxj>maxg && minj>ming)
-        {
-            cout<<sum-minj+maxg-maxj+ming<<endl;
-        }
+        sort(jelly.begin(), jelly.end());
+        sort(gelly.begin(), gelly.end());
+        k--;
     }
-    else
+    if (k % 2 != 0)
     {
-        long long int sum = accumulate(jelly.begin(), jelly.end(), 0ll);
-        if (minj > maxg)
-        {
-            cout << sum << endl;
-        }
-        else
-        {
-            cout<<sum-minj+maxg<<endl;
-        }     
+        int temp = gelly[0];
+        gelly[0] = jelly[jelly.size() - 1];
+        jelly[jelly.size() - 1] = temp;
+        sort(jelly.begin(), jelly.end());
+        sort(gelly.begin(), gelly.end());
     }
+
+    long long int ans = accumulate(jelly.begin(), jelly.end(), 0ll);
+    cout << ans << endl;
 }
-/////
+
 int main()
 {
     int t;
@@ -69,4 +62,3 @@ int main()
         solve(k, jelly, gelly);
     }
 }
-
