@@ -4,6 +4,7 @@ using namespace std;
 //Third Approach
 // TC: O(n^2)
 // SC: O(1)
+//Streak
 void solve()
 {
     long long int n, q;
