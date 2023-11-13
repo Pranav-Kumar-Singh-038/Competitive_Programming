@@ -21,13 +21,8 @@ void solve()
     {
         if (cost1 < costpack2)
         {
-            ans1 = costpack2/cost1;
             ans2 = numDonut2;
-        }
-        else if (cost1 == costpack2)
-        {
-            ans1 = -1;
-            ans2 = 1000000000;
+            ans1=1;
         }
         else
         {
