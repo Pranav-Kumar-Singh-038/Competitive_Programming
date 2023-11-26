@@ -25,8 +25,8 @@ void solve()
         else
         {
             long long int k = 0;
-            long long int max = INT_MIN;
-            long long int min = INT_MAX;
+            long long int max = LONG_LONG_MIN;
+            long long int min = LONG_LONG_MAX;
             while (k + i <= n)
             {
                 long long int sum = accumulate(weights.begin() + k, weights.begin() + k + i, 0ll);
@@ -40,19 +40,31 @@ void solve()
                     min = sum;
                 }
             }
-            long long int diff = max - min;
+            long long int diff = abs(max - min);
             diffs.push_back(diff);
         }
     }
+
     auto large = max_element(diffs.begin(), diffs.end());
-    cout << *large << endl;
+    long long int ans=*large;
+    cout<<ans<<endl;
+    long long int a1=0;
+    long long int a2=0;
+    for(int i=0;i<n/2;i++)
+    {
+       a1+=weights[i];
+    }
+    for(int i=n/2;i<n;i++)
+    {
+       a2+=weights[i];
+    }
 }
 
 int main()
 {
     int t;
     cin >> t;
-    while (t--)
+    for(int i=1;i<=t;i++)
     {
         solve();
     }
