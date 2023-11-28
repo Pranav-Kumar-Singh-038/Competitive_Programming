@@ -14,7 +14,7 @@ void solve()
     {
         m[s[i]] = i;
     }
-
+///this is pranav kumar singh
     if (k % 2 == 0)
     {
         cout << s << endl;
