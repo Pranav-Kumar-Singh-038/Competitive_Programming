@@ -125,6 +125,27 @@ using namespace std;
 //     cout<<counter+big-1<<endl;
 // }
 
+//TC: O(n)
+void solve()
+{
+ int n;
+ cin>>n;
+ vector<int> vec(n);
+ for(int i=0;i<n;i++)
+ {
+    cin>>vec[i];
+ }
+ long long int ans=vec[0]-1;
+ for(int i=1;i<n;i++)
+ {
+    if(vec[i]>vec[i-1])
+    {
+        ans+=vec[i]-vec[i-1];
+    }
+ }
+ cout<<ans<<endl;
+}
+
 int main()
 {
     long long int t;
